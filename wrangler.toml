@@ -1,0 +1,8 @@
+# Cloudflare Pages — free plan
+# Docs: https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+name = "prasar"
+compatibility_date = "2025-10-08"
+pages_build_output_dir = "dist"
+
+# Pages Functions (`functions/proxy.ts`) run on the free Workers plan.
+# No KV / R2 / paid bindings are used.
