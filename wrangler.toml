@@ -1,8 +1,15 @@
-# Cloudflare Pages — free plan
-# Docs: https://developers.cloudflare.com/pages/functions/wrangler-configuration/
-name = "prasar"
-compatibility_date = "2025-10-08"
-pages_build_output_dir = "dist"
+# Cloudflare Workers + static assets (free plan)
+# The 2026 dashboard runs `npx wrangler deploy` after `npm run build`.
+# Do NOT use pages_build_output_dir — that key is Pages-only and causes:
+#   "Missing entry-point to Worker script or to assets directory"
 
-# Pages Functions (`functions/proxy.ts`) run on the free Workers plan.
-# No KV / R2 / paid bindings are used.
+name = "prasar"
+main = "worker.ts"
+compatibility_date = "2026-09-26"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+# Only the stream relay hits the Worker; everything else is a static asset.
+run_worker_first = ["/proxy", "/proxy*"]
