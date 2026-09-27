@@ -12,4 +12,4 @@ directory = "./dist"
 binding = "ASSETS"
 not_found_handling = "single-page-application"
 # Only the stream relay hits the Worker; everything else is a static asset.
-run_worker_first = ["/proxy", "/proxy*"]
+run_worker_first = ["/proxy*"]
